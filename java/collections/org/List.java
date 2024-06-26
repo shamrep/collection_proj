@@ -6,4 +6,5 @@ public interface List<E> {
     E set(int index, E element);
     void clear();
     E get(int index);
+    int size();
 }
