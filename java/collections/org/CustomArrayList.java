@@ -1,7 +1,5 @@
 package collections.org;
 
-import java.util.Objects;
-
 public class CustomArrayList<E> implements List<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
@@ -36,10 +34,10 @@ public class CustomArrayList<E> implements List<E> {
 //        System.arraycopy(data, index, data, index + 1, size - index);
 
         for (int i = size - 1; i >= index; i--) {
-            data[i+1] = data[i];
+            data[i + 1] = data[i];
         }
 
-        data[index+1] = element;
+        data[index + 1] = element;
         size += 1;
     }
 
@@ -62,21 +60,40 @@ public class CustomArrayList<E> implements List<E> {
     private Object[] copyOf(Object[] original, int capacity) {
         Object[] newArray = new Object[capacity];
 
-        for (int i = 0; i < original.length; i++) {
-            newArray[i] = original[i];
-        }
+        System.arraycopy(original, 0, newArray, 0, original.length);
 //        System.arraycopy(original, 0, newArray, 0, original.length);
         return newArray;
     }
 
     @Override
     public boolean remove(Object o) {
+        for (int i = 0; i <= size - 1; i++) {
+
+            if (data[i].equals(o)) {
+                if (i == size - 1) {
+                    data[i] = null;
+                    size -= 1;
+                    return true;
+                }
+
+                for (int j = i; j < size - 1; j++) {
+                    data[j] = data[j + 1];
+                }
+
+                size -= 1;
+                data[size] = null;
+
+                return true;
+            }
+        }
+
         return false;
     }
 
     @Override
     public E set(int index, E element) {
-        Objects.checkIndex(index, size);
+//        Objects.checkIndex(index, size);
+        rangeCheckForAdd(index);
         data[index] = element;
 
         return (E) data[index];
@@ -93,7 +110,8 @@ public class CustomArrayList<E> implements List<E> {
 
     @Override
     public E get(int index) {
-        Objects.checkIndex(index, size);
+//        Objects.checkIndex(index, size);
+        rangeCheckForAdd(index);
 
         return (E) data[index];
     }
