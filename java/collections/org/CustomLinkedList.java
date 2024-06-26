@@ -1,6 +1,21 @@
 package collections.org;
 
-public class CustomLinkedList<E> implements List<E>{
+import java.util.LinkedList;
+
+public class CustomLinkedList<E> implements List<E> {
+
+    private class Node<E> {
+        E element;
+        Node<E> prev;
+        Node<E> next;
+
+        Node(Node<E> prev, E element, Node<E> next) {
+            this.element = element;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
+
     @Override
     public boolean add(E element) {
         return false;
