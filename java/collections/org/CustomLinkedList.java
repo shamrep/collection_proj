@@ -37,27 +37,26 @@ public class CustomLinkedList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-
+//        Node<E> node =
     }
 
     @Override
     public boolean remove(Object o) {
+
+
         return false;
     }
 
     @Override
     public E set(int index, E element) {
-        return null;
+        rangeCheck(index);
+        Node<E> n = getNode(index);
+        n.element = element;
+
+        return n.element;
     }
 
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public E get(int index) {
-
+    private Node<E> getNode(int index) {
         Node<E> n;
 
         if (size < index / 2) {
@@ -72,11 +71,42 @@ public class CustomLinkedList<E> implements List<E> {
             }
         }
 
-        return n.element;
+        return n;
+    }
+
+    @Override
+    public void clear() {
+        for (Node<E> n = first; n != null; ) {
+            Node<E> next = n.next;
+            n.element = null;
+            n.next = null;
+            n.prev = null;
+            n = next;
+        }
+
+        first = last = null;
+        size = 0;
+    }
+
+    @Override
+    public E get(int index) {
+        rangeCheck(index);
+
+        return getNode(index).element;
     }
 
     @Override
     public int size() {
         return size;
     }
+
+    private void rangeCheck(int index) {
+        if (index > size || index < 0)
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+    }
+
+    private String outOfBoundsMsg(int index) {
+        return "Index: " + index + ", Size: " + size;
+    }
+
 }
