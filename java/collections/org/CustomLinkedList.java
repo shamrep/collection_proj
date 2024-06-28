@@ -37,12 +37,32 @@ public class CustomLinkedList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-//        Node<E> node =
+        rangeCheck(index);
+
+        Node<E> oldNode = getNode(index);
+        Node<E> newNode = new Node<>(oldNode.prev, element, oldNode);
+        oldNode.prev = newNode;
+
+        size++;
     }
 
     @Override
     public boolean remove(Object o) {
+        for (Node<E> n = first; n != null; n = n.next) {
+            if(((E)o).equals(n.element)) {
+                Node<E> next = n.next;
+                Node<E> prev = n.prev;
 
+                next.prev = n.prev;
+                prev.next = n.next;
+
+                clearNode(n);
+
+                size--;
+
+                return true;
+            }
+        }
 
         return false;
     }
@@ -50,6 +70,7 @@ public class CustomLinkedList<E> implements List<E> {
     @Override
     public E set(int index, E element) {
         rangeCheck(index);
+
         Node<E> n = getNode(index);
         n.element = element;
 
@@ -78,14 +99,18 @@ public class CustomLinkedList<E> implements List<E> {
     public void clear() {
         for (Node<E> n = first; n != null; ) {
             Node<E> next = n.next;
-            n.element = null;
-            n.next = null;
-            n.prev = null;
+            clearNode(n);
             n = next;
         }
 
         first = last = null;
         size = 0;
+    }
+
+    private void clearNode(Node<E> n) {
+        n.element = null;
+        n.next = null;
+        n.prev = null;
     }
 
     @Override
@@ -98,6 +123,11 @@ public class CustomLinkedList<E> implements List<E> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public void sort() {
+
     }
 
     private void rangeCheck(int index) {

@@ -8,4 +8,5 @@ public interface List<E> {
     void clear();
     E get(int index);
     int size();
+    void sort();
 }

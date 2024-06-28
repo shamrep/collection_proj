@@ -1,6 +1,6 @@
 package collections.org;
 
-public class CustomArrayList<E> implements List<E> {
+public class CustomArrayList<E extends Comparable> implements List<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
     private Object[] data;
@@ -119,5 +119,39 @@ public class CustomArrayList<E> implements List<E> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public void sort() {
+        quickSort(data, 0, size - 1);
+    }
+
+    private void quickSort(Object[] arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    private int partition(Object[] arr, int low, int high) {
+        Object pivot = arr[high];
+        int i = (low - 1);
+
+        for (int j = low; j < high; j++) {
+            if (((E)arr[j]).compareTo(pivot) < 0) {
+                i++;
+                Object temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        Object temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        return i + 1;
     }
 }

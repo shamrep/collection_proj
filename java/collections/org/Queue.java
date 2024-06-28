@@ -1,4 +1,4 @@
 package collections.org;
 
-public interface Deque<E> {
+public interface Queue<E> {
 }
