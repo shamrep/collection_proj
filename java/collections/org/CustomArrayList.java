@@ -140,7 +140,7 @@ public class CustomArrayList<E extends Comparable> implements List<E> {
         int i = (low - 1);
 
         for (int j = low; j < high; j++) {
-            if (((E)arr[j]).compareTo(pivot) < 0) {
+            if (((E) arr[j]).compareTo(pivot) < 0) {
                 i++;
                 Object temp = arr[i];
                 arr[i] = arr[j];
