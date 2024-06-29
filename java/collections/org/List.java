@@ -9,4 +9,5 @@ public interface List<E> {
     E get(int index);
     int size();
     void sort();
+    boolean isEmpty();
 }

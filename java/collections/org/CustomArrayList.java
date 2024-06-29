@@ -112,8 +112,10 @@ public class CustomArrayList<E extends Comparable> implements List<E> {
     public E get(int index) {
 //        Objects.checkIndex(index, size);
         rangeCheckForAdd(index);
+        E element = (E) data[index];
 
-        return (E) data[index];
+//        return (E) data[index];
+        return element;
     }
 
     @Override
@@ -124,6 +126,11 @@ public class CustomArrayList<E extends Comparable> implements List<E> {
     @Override
     public void sort() {
         quickSort(data, 0, size - 1);
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     private void quickSort(Object[] arr, int low, int high) {
