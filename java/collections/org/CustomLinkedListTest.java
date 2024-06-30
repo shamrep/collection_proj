@@ -3,8 +3,6 @@ package collections.org;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.management.ObjectName;
-
 import static org.junit.Assert.*;
 
 public class CustomLinkedListTest {

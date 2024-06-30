@@ -7,13 +7,13 @@ package collections.org;
  * @param <E> the type of elements held in this collection
  * @author Alex
  */
-public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
+public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> {
 
     private Node<E> first;
     private Node<E> last;
     private int size = 0;
 
-    private class Node<E> {
+    private static class Node<E> {
         E element;
         Node<E> prev;
         Node<E> next;
@@ -55,7 +55,7 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
      *
      * @param index index at which the specified element is to be inserted
      * @param element element to be inserted
-     * @throws IndexOutOfBoundsException
+     * @throws IndexOutOfBoundsException – if the index is out of range
      */
     @Override
     public void add(int index, E element) {
@@ -67,6 +67,7 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
             Node<E> oldNode = getNode(index);
             Node<E> newNode = new Node<>(oldNode.prev, element, oldNode);
             oldNode.prev = newNode;
+
             size++;
         }
     }
@@ -168,7 +169,7 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
      *
      * @param index index of the element to return
      * @return the element at the specified position in this list
-     * @throws IndexOutOfBoundsException
+     * @throws IndexOutOfBoundsException – if the index is out of range
      */
     @Override
     public E get(int index) {
@@ -261,15 +262,13 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
         if (left.element.compareTo(right.element) <= 0) {
             result = left;
             result.next = sortedMerge(left.next, right);
-            if (result.next != null) {
-                result.next.prev = result;
-            }
         } else {
             result = right;
             result.next = sortedMerge(left, right.next);
-            if (result.next != null) {
-                result.next.prev = result;
-            }
+        }
+
+        if (result.next != null) {
+            result.next.prev = result;
         }
         return result;
     }
