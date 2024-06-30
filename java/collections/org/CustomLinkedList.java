@@ -61,11 +61,14 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
     public void add(int index, E element) {
         rangeCheck(index);
 
-        Node<E> oldNode = getNode(index);
-        Node<E> newNode = new Node<>(oldNode.prev, element, oldNode);
-        oldNode.prev = newNode;
-
-        size++;
+        if(size == index) {
+            add(element);
+        } else {
+            Node<E> oldNode = getNode(index);
+            Node<E> newNode = new Node<>(oldNode.prev, element, oldNode);
+            oldNode.prev = newNode;
+            size++;
+        }
     }
 
     /**
@@ -115,6 +118,10 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
     }
 
     private Node<E> getNode(int index) {
+        if(size == 0) {
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+        }
+
         rangeCheck(index);
 
         Node<E> n;
