@@ -28,7 +28,7 @@ public class CustomLinkedListTest {
     }
 
     @Test
-    public void testAdd() {
+    public void indexAdd() {
         list.add(0, 1);
         list.add(1, 2);
         list.add(1, 3);

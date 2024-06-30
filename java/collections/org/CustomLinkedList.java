@@ -59,7 +59,7 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
      */
     @Override
     public void add(int index, E element) {
-        rangeCheck(index);
+//        rangeCheck(index);
 
         if(size == index) {
             add(element);
@@ -67,6 +67,14 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
             Node<E> oldNode = getNode(index);
             Node<E> newNode = new Node<>(oldNode.prev, element, oldNode);
             oldNode.prev = newNode;
+
+            if(newNode.prev == null) {
+                first = newNode;
+            }
+
+            if(newNode.next == null) {
+                last = newNode;
+            }
 
             size++;
         }
@@ -109,7 +117,7 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
      */
     @Override
     public E set(int index, E element) {
-        rangeCheck(index);
+//        rangeCheck(index);
 
         Node<E> n = getNode(index);
         E oldElement = n.element;
@@ -173,8 +181,7 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
      */
     @Override
     public E get(int index) {
-        rangeCheck(index);
-
+//        rangeCheck(index);
         return getNode(index).element;
     }
 
