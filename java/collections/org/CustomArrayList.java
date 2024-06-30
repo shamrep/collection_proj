@@ -12,6 +12,9 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
     private Object[] data;
     private int size;
 
+    /**
+     * Constructs an empty list with an initial capacity of ten.
+     */
     public CustomArrayList() {
         this.data = new Object[DEFAULT_CAPACITY];
         this.size = 0;
@@ -61,8 +64,6 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
             data[index] = element;
             size += 1;
         }
-
-//        System.arraycopy(data, index, data, index + 1, size - index);
     }
 
     private void rangeCheckForAdd(int index) {
@@ -77,7 +78,6 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
     private Object[] grow() {
         int newCapacity = data.length * 2;
 
-//        return data = Arrays.copyOf(data, newCapacity);
         return data = copyOf(data, newCapacity);
     }
 
@@ -85,10 +85,9 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
         Object[] newArray = new Object[capacity];
 
         System.arraycopy(original, 0, newArray, 0, original.length);
-//        System.arraycopy(original, 0, newArray, 0, original.length);
+
         return newArray;
     }
-
 
     /**
      * Removes the first occurrence of the specified element from this list, if it is present.
@@ -161,7 +160,6 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
      */
     @Override
     public E get(int index) {
-//        Objects.checkIndex(index, size);
         if (size == 0) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
