@@ -41,7 +41,7 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
      *
      * @param index   – index at which the specified element is to be inserted
      * @param element – element to be inserted
-     * @throws IndexOutOfBoundsException
+     * @throws IndexOutOfBoundsException – if the index is out of range
      */
     @Override
     public void add(int index, E element) {
@@ -165,11 +165,10 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
         if (size == 0) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
-        rangeCheckForAdd(index);
-        E element = (E) data[index];
 
-//        return (E) data[index];
-        return element;
+        rangeCheckForAdd(index);
+
+        return (E) data[index];
     }
 
     /**
