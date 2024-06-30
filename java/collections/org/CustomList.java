@@ -15,6 +15,7 @@ public interface CustomList<E> {
      * @return true
      */
     boolean add(E element);
+
     /**
      * Inserts the specified element at the specified position in this list.
      * Shifts the element currently at that position (if any) and any subsequent elements to the right.
@@ -24,6 +25,7 @@ public interface CustomList<E> {
      * @throws IndexOutOfBoundsException
      */
     void add(int index, E element);
+
     /**
      * Removes the first occurrence of the specified element from this list, if it is present.
      * If the list does not contain the element, it is unchanged.
@@ -32,6 +34,7 @@ public interface CustomList<E> {
      * @return {@code true} if this list contained the specified element
      */
     boolean remove(Object o);
+
     /**
      * Replaces the element at the specified position in this list with the specified element (optional operation).
      *
@@ -41,6 +44,7 @@ public interface CustomList<E> {
      * @throws IndexOutOfBoundsException – if the index is out of range
      */
     E set(int index, E element);
+
     /**
      * Removes all of the elements from this list. The list will be empty after this call returns.
      */
@@ -53,16 +57,19 @@ public interface CustomList<E> {
      * @throws IndexOutOfBoundsException – if the index is out of range
      */
     E get(int index);
+
     /**
      * Returns the number of elements in this list.
      *
      * @return the number of elements in this list
      */
     int size();
+
     /**
      * Sorts this list according to the order.
      */
     void sort();
+
     /**
      * Returns {@code true} if this list contains no elements.
      *
