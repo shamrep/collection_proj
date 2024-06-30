@@ -1,6 +1,12 @@
 package collections.org;
 
-public class CustomArrayList<E extends Comparable> implements List<E> {
+/**
+ * Resizable-array implementation of the {@code CustomList} interface.
+ *
+ * @param <E> the type of elements in this list
+ * @author  Alex
+ */
+public class CustomArrayList<E extends Comparable> implements CustomList<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
     private Object[] data;
@@ -11,6 +17,12 @@ public class CustomArrayList<E extends Comparable> implements List<E> {
         this.size = 0;
     }
 
+    /**
+     * Appends the specified element to the end of this list.
+     *
+     * @param element element to be appended to this list
+     * @return true
+     */
     @Override
     public boolean add(E element) {
         if (size == data.length) {
@@ -23,6 +35,14 @@ public class CustomArrayList<E extends Comparable> implements List<E> {
         return true;
     }
 
+    /**
+     * Inserts the specified element at the specified position in this list.
+     * Shifts the element currently at that position (if any) and any subsequent elements to the right.
+     *
+     * @param index – index at which the specified element is to be inserted
+     * @param element – element to be inserted
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public void add(int index, E element) {
         rangeCheckForAdd(index);
@@ -65,6 +85,14 @@ public class CustomArrayList<E extends Comparable> implements List<E> {
         return newArray;
     }
 
+
+    /**
+     * Removes the first occurrence of the specified element from this list, if it is present.
+     * If the list does not contain the element, it is unchanged.
+     *
+     * @param o – o element to be removed from this list, if present
+     * @return {@code true} if this list contained the specified element
+     */
     @Override
     public boolean remove(Object o) {
         for (int i = 0; i <= size - 1; i++) {
@@ -90,15 +118,27 @@ public class CustomArrayList<E extends Comparable> implements List<E> {
         return false;
     }
 
+    /**
+     * Replaces the element at the specified position in this list with the specified element (optional operation).
+     *
+     * @param index – index of the element to replace
+     * @param element – element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws IndexOutOfBoundsException – if the index is out of range
+     */
     @Override
     public E set(int index, E element) {
-//        Objects.checkIndex(index, size);
         rangeCheckForAdd(index);
+
+        E oldValue = (E) data[index];
         data[index] = element;
 
-        return (E) data[index];
+        return oldValue;
     }
 
+    /**
+     * Removes all of the elements from this list. The list will be empty after this call returns.
+     */
     @Override
     public void clear() {
         for (int i = 0; i < size; i++) {
@@ -108,6 +148,13 @@ public class CustomArrayList<E extends Comparable> implements List<E> {
         size = 0;
     }
 
+    /**
+     * Returns the element at the specified position in this list.
+     *
+     * @param index – index of the element to return
+     * @return the element at the specified position in this list
+     * @throws IndexOutOfBoundsException – if the index is out of range
+     */
     @Override
     public E get(int index) {
 //        Objects.checkIndex(index, size);
@@ -118,16 +165,29 @@ public class CustomArrayList<E extends Comparable> implements List<E> {
         return element;
     }
 
+    /**
+     * Returns the number of elements in this list.
+     *
+     * @return the number of elements in this list
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Sorts this list according to the order.
+     */
     @Override
     public void sort() {
         quickSort(data, 0, size - 1);
     }
 
+    /**
+     * Returns {@code true} if this list contains no elements.
+     *
+     * @return {@code true} if this list contains no elements
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;

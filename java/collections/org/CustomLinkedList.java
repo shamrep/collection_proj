@@ -1,6 +1,6 @@
 package collections.org;
 
-public class CustomLinkedList<E extends Comparable> implements List<E> {
+public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
 
     private Node<E> first;
     private Node<E> last;
@@ -18,6 +18,12 @@ public class CustomLinkedList<E extends Comparable> implements List<E> {
         }
     }
 
+    /**
+     * Appends the specified element to the end of this list.
+     *
+     * @param element - element to be appended to this list
+     * @return true
+     */
     @Override
     public boolean add(E element) {
         Node<E> l = last;
@@ -35,6 +41,15 @@ public class CustomLinkedList<E extends Comparable> implements List<E> {
         return true;
     }
 
+    /**
+     * Inserts the specified element at the specified position in this
+     * list. Shifts the element currently at that position (if any) and
+     * any subsequent elements to the right.
+     *
+     * @param index index at which the specified element is to be inserted
+     * @param element element to be inserted
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public void add(int index, E element) {
         rangeCheck(index);
@@ -46,6 +61,12 @@ public class CustomLinkedList<E extends Comparable> implements List<E> {
         size++;
     }
 
+    /**
+     * Removes the first occurrence of the specified element from this list, if it is present.
+     *
+     * @param o – element to be removed from this list, if present
+     * @return true if this list contained the specified element
+     */
     @Override
     public boolean remove(Object o) {
         for (Node<E> n = first; n != null; n = n.next) {
