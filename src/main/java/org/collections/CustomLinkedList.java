@@ -1,4 +1,4 @@
-package collections.org;
+package org.collections;
 
 /**
  * Doubly-linked list implementation of the {@code CustomList} and {@code Deque}

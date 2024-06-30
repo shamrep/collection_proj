@@ -1,4 +1,4 @@
-package collections.org;
+package org.collections;
 
 /**
  * Resizable-array implementation of the {@code CustomList} interface.

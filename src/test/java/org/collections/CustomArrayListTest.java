@@ -1,17 +1,17 @@
-package collections.org;
+package org.collections;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CustomLinkedListTest {
+public class CustomArrayListTest {
 
-    private CustomLinkedList<Integer> list;
+    private CustomArrayList<Integer> list;
 
     @Before
     public void setUp() {
-        list = new CustomLinkedList<>();
+        list = new CustomArrayList<>();
     }
 
     @Test
@@ -28,7 +28,7 @@ public class CustomLinkedListTest {
     }
 
     @Test
-    public void indexAdd() {
+    public void testAdd() {
         list.add(0, 1);
         list.add(1, 2);
         list.add(1, 3);
@@ -95,6 +95,7 @@ public class CustomLinkedListTest {
         list.add(0);
 
         list.sort();
+
         assertEquals(Integer.valueOf(0), list.get(0));
         assertEquals(Integer.valueOf(1), list.get(1));
         assertEquals(Integer.valueOf(2), list.get(2));

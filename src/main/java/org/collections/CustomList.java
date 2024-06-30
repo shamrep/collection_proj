@@ -1,4 +1,4 @@
-package collections.org;
+package org.collections;
 
 /**
  * An ordered collection, where the user has precise control over where in the
