@@ -47,18 +47,24 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
     public void add(int index, E element) {
         rangeCheckForAdd(index);
 
-        if (size == data.length) {
-            data = grow();
+        if(index == size) {
+            add(element);
+        } else {
+            if (size == data.length) {
+                data = grow();
+            }
+
+            for (int i = size - 1; i >= index; i--) {
+                data[i + 1] = data[i];
+            }
+
+            data[index] = element;
+            size += 1;
         }
 
 //        System.arraycopy(data, index, data, index + 1, size - index);
 
-        for (int i = size - 1; i >= index; i--) {
-            data[i + 1] = data[i];
-        }
 
-        data[index + 1] = element;
-        size += 1;
     }
 
     private void rangeCheckForAdd(int index) {
@@ -158,6 +164,9 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
     @Override
     public E get(int index) {
 //        Objects.checkIndex(index, size);
+        if(size == 0) {
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+        }
         rangeCheckForAdd(index);
         E element = (E) data[index];
 
