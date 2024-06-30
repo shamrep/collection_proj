@@ -1,5 +1,12 @@
 package collections.org;
 
+/**
+ * Doubly-linked list implementation of the {@code CustomList} and {@code Deque}
+ * interfaces.
+ *
+ * @param <E> the type of elements held in this collection
+ * @author Alex
+ */
 public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
 
     private Node<E> first;
@@ -88,6 +95,14 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
         return false;
     }
 
+    /**
+     * Replaces the element at the specified position in this list with the specified element (optional operation).
+     *
+     * @param index – index of the element to replace
+     * @param element – element to be stored at the specified position
+     * @return the element previously at the specified position
+     * @throws IndexOutOfBoundsException – if the index is out of range
+     */
     @Override
     public E set(int index, E element) {
         rangeCheck(index);
@@ -119,6 +134,10 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
         return n;
     }
 
+    /**
+     * Removes all of the elements from this list.
+     * The list will be empty after this call returns.
+     */
     @Override
     public void clear() {
         for (Node<E> n = first; n != null; ) {
@@ -137,6 +156,13 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
         n.prev = null;
     }
 
+    /**
+     * Returns the element at the specified position in this list.
+     *
+     * @param index index of the element to return
+     * @return the element at the specified position in this list
+     * @throws IndexOutOfBoundsException
+     */
     @Override
     public E get(int index) {
         rangeCheck(index);
@@ -144,11 +170,19 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
         return getNode(index).element;
     }
 
+    /**
+     * Returns the number of elements in this list.
+     *
+     * @return the number of elements in this list
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Sorts this list according to the order.
+     */
     @Override
     public void sort() {
         if (size > 1) {
@@ -162,6 +196,11 @@ public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
         }
     }
 
+    /**
+     * Returns {@code true} if this list contains no elements.
+     *
+     * @return {@code true} if this list contains no elements
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
