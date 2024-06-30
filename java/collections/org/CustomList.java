@@ -22,7 +22,7 @@ public interface CustomList<E> {
      *
      * @param index – index at which the specified element is to be inserted
      * @param element – element to be inserted
-     * @throws IndexOutOfBoundsException
+     * @throws IndexOutOfBoundsException – if the index is out of range
      */
     void add(int index, E element);
 
