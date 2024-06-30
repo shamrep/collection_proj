@@ -8,6 +8,7 @@ package collections.org;
  * @author  Alex
  */
 public interface CustomList<E> {
+
     /**
      * Appends the specified element to the end of this list.
      *
@@ -49,6 +50,7 @@ public interface CustomList<E> {
      * Removes all of the elements from this list. The list will be empty after this call returns.
      */
     void clear();
+
     /**
      * Returns the element at the specified position in this list.
      *
