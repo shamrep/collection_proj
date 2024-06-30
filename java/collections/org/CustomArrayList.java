@@ -4,7 +4,7 @@ package collections.org;
  * Resizable-array implementation of the {@code CustomList} interface.
  *
  * @param <E> the type of elements in this list
- * @author  Alex
+ * @author Alex
  */
 public class CustomArrayList<E extends Comparable> implements CustomList<E> {
 
@@ -39,7 +39,7 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
      * Inserts the specified element at the specified position in this list.
      * Shifts the element currently at that position (if any) and any subsequent elements to the right.
      *
-     * @param index – index at which the specified element is to be inserted
+     * @param index   – index at which the specified element is to be inserted
      * @param element – element to be inserted
      * @throws IndexOutOfBoundsException
      */
@@ -47,7 +47,7 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
     public void add(int index, E element) {
         rangeCheckForAdd(index);
 
-        if(index == size) {
+        if (index == size) {
             add(element);
         } else {
             if (size == data.length) {
@@ -63,8 +63,6 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
         }
 
 //        System.arraycopy(data, index, data, index + 1, size - index);
-
-
     }
 
     private void rangeCheckForAdd(int index) {
@@ -127,7 +125,7 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
     /**
      * Replaces the element at the specified position in this list with the specified element (optional operation).
      *
-     * @param index – index of the element to replace
+     * @param index   – index of the element to replace
      * @param element – element to be stored at the specified position
      * @return the element previously at the specified position
      * @throws IndexOutOfBoundsException – if the index is out of range
@@ -164,7 +162,7 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
     @Override
     public E get(int index) {
 //        Objects.checkIndex(index, size);
-        if(size == 0) {
+        if (size == 0) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
         rangeCheckForAdd(index);
