@@ -202,9 +202,9 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
     public void sort() {
         if (size > 1) {
             first = mergeSort(first);
-
             // Fix the last reference after sorting
             last = first;
+
             while (last.next != null) {
                 last = last.next;
             }
@@ -288,5 +288,4 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
     private String outOfBoundsMsg(int index) {
         return "Index: " + index + ", Size: " + size;
     }
-
 }
