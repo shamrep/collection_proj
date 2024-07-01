@@ -1,4 +1,8 @@
 /out
 /*.iml
 /.idea
-
+/.gradle
+/build/
+/gradlew.bat
+/gradlew/
+/gradle/
