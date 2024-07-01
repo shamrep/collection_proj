@@ -22,7 +22,6 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
         this.size = 0;
     }
 
-
     /**
      * Constructs a list containing the elements of the specified collection,
      * in the order they are returned by the collection's iterator.
