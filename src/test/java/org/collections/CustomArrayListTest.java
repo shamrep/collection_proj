@@ -1,6 +1,5 @@
 package org.collections;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -37,7 +36,7 @@ public class CustomArrayListTest {
     private void assertEqualsList(List<Integer> expectedList, CustomArrayList<Integer> actualList) {
         assertEquals(expectedList.size(), actualList.size());
 
-        for(int i = 0; i < actualList.size(); i++) {
+        for (int i = 0; i < actualList.size(); i++) {
             assertEquals(expectedList.get(i), actualList.get(i));
         }
     }
@@ -80,7 +79,7 @@ public class CustomArrayListTest {
     @Test
     public void clear_deleteAllElements_emptyList() {
         // given
-        CustomArrayList<Integer> list = new CustomArrayList<>(asList(1,2,3));
+        CustomArrayList<Integer> list = new CustomArrayList<>(asList(1, 2, 3));
 
         // when
         list.clear();
@@ -93,7 +92,7 @@ public class CustomArrayListTest {
     @Test
     public void set_changeElementValueByIndex_changedValue() {
         // given
-        CustomArrayList<Integer> list = new CustomArrayList<>(asList(1,2,3));
+        CustomArrayList<Integer> list = new CustomArrayList<>(asList(1, 2, 3));
 
         // when
         list.set(1, 4);
@@ -105,7 +104,7 @@ public class CustomArrayListTest {
     @Test
     public void get_getElementValue_elementValue() {
         // given
-        CustomArrayList<Integer> list = new CustomArrayList<>(asList(1,2,3));
+        CustomArrayList<Integer> list = new CustomArrayList<>(asList(1, 2, 3));
 
         // when
         Integer value = list.get(1);

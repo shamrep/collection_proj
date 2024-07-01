@@ -44,7 +44,7 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
      * @throws NullPointerException if the specified collection is null
      */
     public CustomLinkedList(Collection<? extends E> c) {
-        for(Object o : c) {
+        for (Object o : c) {
             add((E) o);
         }
     }
@@ -77,7 +77,7 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
      * list. Shifts the element currently at that position (if any) and
      * any subsequent elements to the right.
      *
-     * @param index index at which the specified element is to be inserted
+     * @param index   index at which the specified element is to be inserted
      * @param element element to be inserted
      * @throws IndexOutOfBoundsException – if the index is out of range
      */
@@ -85,18 +85,18 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
     public void add(int index, E element) {
 //        rangeCheck(index);
 
-        if(size == index) {
+        if (size == index) {
             add(element);
         } else {
             Node<E> oldNode = getNode(index);
             Node<E> newNode = new Node<>(oldNode.prev, element, oldNode);
             oldNode.prev = newNode;
 
-            if(newNode.prev == null) {
+            if (newNode.prev == null) {
                 first = newNode;
             }
 
-            if(newNode.next == null) {
+            if (newNode.next == null) {
                 last = newNode;
             }
 
@@ -134,7 +134,7 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
     /**
      * Replaces the element at the specified position in this list with the specified element (optional operation).
      *
-     * @param index – index of the element to replace
+     * @param index   – index of the element to replace
      * @param element – element to be stored at the specified position
      * @return the element previously at the specified position
      * @throws IndexOutOfBoundsException – if the index is out of range
@@ -151,7 +151,7 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
     }
 
     private Node<E> getNode(int index) {
-        if(size == 0) {
+        if (size == 0) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
 
@@ -291,8 +291,8 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
 
         Node<E> result;
 
-        if(left.element == null || right.element == null) {
-            if(left.element == null) {
+        if (left.element == null || right.element == null) {
+            if (left.element == null) {
                 result = left;
                 result.next = sortedMerge(left.next, right);
             } else {

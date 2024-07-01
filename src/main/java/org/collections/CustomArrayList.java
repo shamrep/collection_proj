@@ -28,13 +28,12 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
      * in the order they are returned by the collection's iterator.
      *
      * @param c – the collection whose elements are to be placed into this list
-     *
      * @throws NullPointerException – if the specified collection is null
      */
     public CustomArrayList(Collection<? extends E> c) {
         this.data = new Object[c.size()];
 
-        for(Object o : c) {
+        for (Object o : c) {
             add((E) o);
         }
     }
@@ -230,7 +229,7 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
         int i = (low - 1);
 
         for (int j = low; j < high; j++) {
-            if(arr[j] == null) {
+            if (arr[j] == null) {
                 i++;
                 Object temp = arr[i];
                 arr[i] = arr[j];
