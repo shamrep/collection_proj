@@ -9,7 +9,7 @@ import java.util.Collection;
  * @param <E> the type of elements held in this collection
  * @author Alex
  */
-public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> {
+public class CustomLinkedList<E extends Comparable> implements CustomList<E> {
 
     private Node<E> first;
     private Node<E> last;
@@ -82,8 +82,6 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
      */
     @Override
     public void add(int index, E element) {
-//        rangeCheck(index);
-
         if (size == index) {
             add(element);
         } else {
@@ -140,8 +138,6 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
      */
     @Override
     public E set(int index, E element) {
-//        rangeCheck(index);
-
         Node<E> n = getNode(index);
         E oldElement = n.element;
         n.element = element;
@@ -204,7 +200,6 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
      */
     @Override
     public E get(int index) {
-//        rangeCheck(index);
         return getNode(index).element;
     }
 
