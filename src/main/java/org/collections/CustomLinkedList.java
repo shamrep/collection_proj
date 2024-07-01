@@ -1,5 +1,7 @@
 package org.collections;
 
+import java.util.Collection;
+
 /**
  * Doubly-linked list implementation of the {@code CustomList} and {@code Deque}
  * interfaces.
@@ -22,6 +24,16 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
             this.element = element;
             this.next = next;
             this.prev = prev;
+        }
+    }
+
+    public CustomLinkedList() {
+
+    }
+
+    public CustomLinkedList(Collection<? extends E> c) {
+        for(Object o : c) {
+            add((E) o);
         }
     }
 
@@ -266,17 +278,29 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
         }
 
         Node<E> result;
-        if (left.element.compareTo(right.element) <= 0) {
-            result = left;
-            result.next = sortedMerge(left.next, right);
+
+        if(left.element == null || right.element == null) {
+            if(left.element == null) {
+                result = left;
+                result.next = sortedMerge(left.next, right);
+            } else {
+                result = right;
+                result.next = sortedMerge(left, right.next);
+            }
         } else {
-            result = right;
-            result.next = sortedMerge(left, right.next);
+            if (left.element.compareTo(right.element) <= 0) {
+                result = left;
+                result.next = sortedMerge(left.next, right);
+            } else {
+                result = right;
+                result.next = sortedMerge(left, right.next);
+            }
         }
 
         if (result.next != null) {
             result.next.prev = result;
         }
+
         return result;
     }
 
