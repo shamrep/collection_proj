@@ -1,5 +1,7 @@
 package org.collections;
 
+import java.util.Collection;
+
 /**
  * Resizable-array implementation of the {@code CustomList} interface.
  *
@@ -18,6 +20,14 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
     public CustomArrayList() {
         this.data = new Object[DEFAULT_CAPACITY];
         this.size = 0;
+    }
+
+    public CustomArrayList(Collection<? extends E> c) {
+        this.data = new Object[c.size()];
+
+        for(Object o : c) {
+            add((E) o);
+        }
     }
 
     /**
@@ -211,11 +221,18 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
         int i = (low - 1);
 
         for (int j = low; j < high; j++) {
-            if (((E) arr[j]).compareTo(pivot) < 0) {
+            if(arr[j] == null) {
                 i++;
                 Object temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
+            } else {
+                if (((E) arr[j]).compareTo(pivot) < 0) {
+                    i++;
+                    Object temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
             }
         }
 

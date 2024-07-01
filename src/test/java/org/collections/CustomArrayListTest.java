@@ -3,15 +3,50 @@ package org.collections;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
 public class CustomArrayListTest {
 
     private CustomArrayList<Integer> list;
 
-    @Before
-    public void setUp() {
-        list = new CustomArrayList<>();
+//    @Before
+//    public void setUp() {
+//        list = new CustomArrayList<>();
+//    }
+
+    @Test
+    public void sort_unsortedList_sortedList() {
+        // given
+        CustomArrayList<Integer> list = new CustomArrayList<>(asList(5, 1, 2, 0));
+
+        // when
+        list.sort();
+
+        // then
+        assertEqualsList(asList(0, 1, 2, 5), list);
+    }
+
+    @Test
+    public void sort_thereAreNulls_nullsLast() {
+        // given
+        CustomArrayList<Integer> list = new CustomArrayList<>(asList(5, 1, null, 2, 0));
+
+        // when
+        list.sort();
+
+        // then
+        assertEqualsList(asList(null, 0, 1, 2, 5), list);
+    }
+
+    private void assertEqualsList(List<Integer> expectedList, CustomArrayList<Integer> actualList) {
+        assertEquals(expectedList.size(), actualList.size());
+
+        for(int i = 0; i < actualList.size(); i++) {
+            assertEquals(expectedList.get(i), actualList.get(i));
+        }
     }
 
     @Test
