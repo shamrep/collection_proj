@@ -22,6 +22,15 @@ public class CustomArrayList<E extends Comparable> implements CustomList<E> {
         this.size = 0;
     }
 
+
+    /**
+     * Constructs a list containing the elements of the specified collection,
+     * in the order they are returned by the collection's iterator.
+     *
+     * @param c – the collection whose elements are to be placed into this list
+     *
+     * @throws NullPointerException – if the specified collection is null
+     */
     public CustomArrayList(Collection<? extends E> c) {
         this.data = new Object[c.size()];
 

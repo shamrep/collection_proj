@@ -27,10 +27,22 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
         }
     }
 
+
+    /**
+     * Constructs an empty list
+     */
     public CustomLinkedList() {
 
     }
 
+    /**
+     * Constructs a list containing the elements of the specified
+     * collection, in the order they are returned by the collection's
+     * iterator.
+     *
+     * @param c the collection whose elements are to be placed into this list
+     * @throws NullPointerException if the specified collection is null
+     */
     public CustomLinkedList(Collection<? extends E> c) {
         for(Object o : c) {
             add((E) o);
