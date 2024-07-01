@@ -23,7 +23,7 @@ public class CustomArrayListTest {
     }
 
     @Test
-    public void sort_thereAreNulls_nullsLast() {
+    public void sort_thereAreNulls_nullsFirst() {
         // given
         CustomArrayList<Integer> list = new CustomArrayList<>(asList(5, 1, null, 2, 0));
 
