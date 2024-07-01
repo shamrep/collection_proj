@@ -27,7 +27,6 @@ public class CustomLinkedList<E extends Comparable<E>> implements CustomList<E> 
         }
     }
 
-
     /**
      * Constructs an empty list
      */
