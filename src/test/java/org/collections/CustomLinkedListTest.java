@@ -11,7 +11,7 @@ public class CustomLinkedListTest {
     @Test
     public void sort_unsortedList_sortedList() {
         // given
-        CustomLinkedList<Integer> list = new CustomLinkedList<>(asList(5, 1, 2, 0));
+        CustomList<Integer> list = new CustomLinkedList<>(asList(5, 1, 2, 0));
 
         // when
         list.sort();
@@ -23,7 +23,7 @@ public class CustomLinkedListTest {
     @Test
     public void sort_thereAreNulls_nullsFirst() {
         // given
-        CustomLinkedList<Integer> list = new CustomLinkedList<>(asList(5, 1, null, 2, 0));
+        CustomList<Integer> list = new CustomLinkedList<>(asList(5, 1, null, 2, 0));
 
         // when
         list.sort();
@@ -32,7 +32,7 @@ public class CustomLinkedListTest {
         assertEqualsList(asList(null, 0, 1, 2, 5), list);
     }
 
-    private void assertEqualsList(List<Integer> expectedList, CustomLinkedList<Integer> actualList) {
+    private void assertEqualsList(List<Integer> expectedList, CustomList<Integer> actualList) {
         assertEquals(expectedList.size(), actualList.size());
 
         for (int i = 0; i < actualList.size(); i++) {

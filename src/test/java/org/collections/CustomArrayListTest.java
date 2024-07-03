@@ -12,7 +12,7 @@ public class CustomArrayListTest {
     @Test
     public void sort_unsortedList_sortedList() {
         // given
-        CustomArrayList<Integer> list = new CustomArrayList<>(asList(5, 1, 2, 0));
+        CustomList<Integer> list = new CustomArrayList<>(asList(5, 1, 2, 0));
 
         // when
         list.sort();
@@ -33,7 +33,7 @@ public class CustomArrayListTest {
         assertEqualsList(asList(null, 0, 1, 2, 5), list);
     }
 
-    private void assertEqualsList(List<Integer> expectedList, CustomArrayList<Integer> actualList) {
+    private void assertEqualsList(List<Integer> expectedList, CustomList<Integer> actualList) {
         assertEquals(expectedList.size(), actualList.size());
 
         for (int i = 0; i < actualList.size(); i++) {
